@@ -10,7 +10,16 @@
             <mat-icon class="cursor-pointer">swipe_right</mat-icon>
         </div>
 
-        <button class="zoom-btn" (click)="zoomIn()">＋ Zoom In</button>
+        <button class="zoom-btn" (click)="zoomIn()">＋ Zoom In {{selectedPolygon}}</button>
         <button class="zoom-btn" (click)="zoomOut()">－ Zoom Out</button>
     </div>
+</div>
+
+
+
+
+<div #stageContainer class="stage-container"></div>
+
+<div *ngIf="selectedPolygon !== null" class="popup">
+  You clicked on polygon #{{ selectedPolygon + 1 }}
 </div>

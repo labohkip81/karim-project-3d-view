@@ -9,6 +9,7 @@ import { NgxPanZoomModule } from 'ngx-panzoom';
 import { ProjectCard } from './components/project-card/project-card';
 import { ProjectDetailsCard } from './components/project-details-card/project-details-card';
 import { ImagesCard } from './components/images-card/images-card';
+import { HoverModal } from './components/hover-modal/hover-modal';
 
 
 
@@ -18,6 +19,7 @@ import { ImagesCard } from './components/images-card/images-card';
     ProjectCard,
     ProjectDetailsCard,
     ImagesCard,
+    HoverModal,
   ],
   imports: [
     BrowserModule,

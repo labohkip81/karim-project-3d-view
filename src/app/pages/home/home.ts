@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild, AfterViewInit, ChangeDetectionStrategy, HostListener, Input } from '@angular/core';
 import Konva from 'konva';
 import { MaterialModule } from '../../modules/material/material-module';
+import { MatDialog } from '@angular/material/dialog';
+import { ProjectDetailsCard } from '../../components/project-details-card/project-details-card';
+import { HoverModal } from '../../components/hover-modal/hover-modal';
 
 interface Room {
   name: string;
@@ -16,28 +19,32 @@ interface Room {
   standalone: true,
   templateUrl: "home.html",
   styleUrl: 'home.css',
-  imports:[CommonModule, MaterialModule],
+  imports: [CommonModule, MaterialModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home implements AfterViewInit {
- @ViewChild('stageContainer', { static: true }) stageContainer!: ElementRef<HTMLDivElement>;
+  @ViewChild('stageContainer', { static: true }) stageContainer!: ElementRef<HTMLDivElement>;
 
   @Input() imageUrl = '/morvara.webp';
   @Input() polygons: Array<Array<{ x: number; y: number }>> = [
- [
-  { x: 0.42, y: 0.356 },  // was 0.256
-  { x: 0.5,  y: 0.356 },  // was 0.256
-  { x: 0.5,  y: 0.38  },  // was 0.28
-  { x: 0.42, y: 0.38  },  // was 0.28
-],
-  // Original large rectangle
- [
-  { x: 0.52, y: 0.456 },  // was 0.256
-  { x: 0.6,  y: 0.456 },  // was 0.256
-  { x: 0.6,  y: 0.48  },  // was 0.28
-  { x: 0.52, y: 0.48  },  // was 0.28
-]
-];
+    [
+      { x: 0.42, y: 0.356 },  // was 0.256
+      { x: 0.5, y: 0.356 },  // was 0.256
+      { x: 0.5, y: 0.38 },  // was 0.28
+      { x: 0.42, y: 0.38 },  // was 0.28
+    ],
+    // Original large rectangle
+    [
+      { x: 0.52, y: 0.456 },  // was 0.256
+      { x: 0.6, y: 0.456 },  // was 0.256
+      { x: 0.6, y: 0.48 },  // was 0.28
+      { x: 0.52, y: 0.48 },  // was 0.28
+    ]
+  ];
+
+  constructor(private dialog: MatDialog) {
+
+  }
 
 
   private stage?: Konva.Stage;
@@ -45,6 +52,9 @@ export class Home implements AfterViewInit {
   private konvaImage?: Konva.Image;
   private imageElement?: HTMLImageElement;
   private layerScale = 1;
+
+  selectedPolygon: number | null = null;
+
 
   ngAfterViewInit(): void {
     this.loadAndBuildStage(this.imageUrl);
@@ -110,6 +120,7 @@ export class Home implements AfterViewInit {
         konvaPoly.fill('rgb(120,187,123, 0.8)');
         konvaPoly.strokeWidth(3);
         this.layer?.draw();
+       
       });
       konvaPoly.on('mouseleave', () => {
         container.style.cursor = 'grab';
@@ -117,7 +128,12 @@ export class Home implements AfterViewInit {
         konvaPoly.strokeWidth(2);
         this.layer?.draw();
       });
-      konvaPoly.on('click', () => alert(`Clicked on unit #${idx + 1}`));
+      konvaPoly.on('click', () => this.dialog.open(HoverModal, {
+        width: '400px', // optional
+        position: { bottom: '50px', left: '50%' }, // bottom center
+        panelClass: 'bottom-dialog', // optional for extra styling
+        hasBackdrop: true, // optional
+      }));
 
       this.layer?.add(konvaPoly);
     });
@@ -138,7 +154,7 @@ export class Home implements AfterViewInit {
     const imgW = this.imageElement.width;
     const imgH = this.imageElement.height;
 
-    const scale = Math.min(containerW / imgW, containerH / imgH, 1) * 1.4;    
+    const scale = Math.min(containerW / imgW, containerH / imgH, 1) * 1.4;
     this.stage.width(containerW);
     this.stage.height(containerH);
 
