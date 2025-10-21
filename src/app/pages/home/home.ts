@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild, AfterViewInit, ChangeDetectionStrategy, HostListener, Input } from '@angular/core';
 import Konva from 'konva';
+import { MaterialModule } from '../../modules/material/material-module';
 
 interface Room {
   name: string;
@@ -15,7 +16,7 @@ interface Room {
   standalone: true,
   templateUrl: "home.html",
   styleUrl: 'home.css',
-  imports:[CommonModule],
+  imports:[CommonModule, MaterialModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home implements AfterViewInit {
@@ -23,20 +24,19 @@ export class Home implements AfterViewInit {
 
   @Input() imageUrl = '/morvara.webp';
   @Input() polygons: Array<Array<{ x: number; y: number }>> = [
-  // Small square (moved to the left)
-  [
-    { x: 0.32, y: 0.256 },  // first point
-    { x: 0.4, y: 0.256 }, // second point
-    { x: 0.4, y: 0.28},
-    { x: 0.32, y: 0.28 },
-  ],
+ [
+  { x: 0.42, y: 0.356 },  // was 0.256
+  { x: 0.5,  y: 0.356 },  // was 0.256
+  { x: 0.5,  y: 0.38  },  // was 0.28
+  { x: 0.42, y: 0.38  },  // was 0.28
+],
   // Original large rectangle
-  [
-    { x: 0.7, y: 0.256 },  // first point
-    { x: 0.6, y: 0.256 }, // second point
-    { x: 0.6, y: 0.28},
-    { x: 0.7, y: 0.28 },
-  ],
+ [
+  { x: 0.52, y: 0.456 },  // was 0.256
+  { x: 0.6,  y: 0.456 },  // was 0.256
+  { x: 0.6,  y: 0.48  },  // was 0.28
+  { x: 0.52, y: 0.48  },  // was 0.28
+]
 ];
 
 
@@ -100,24 +100,24 @@ export class Home implements AfterViewInit {
       const konvaPoly = new Konva.Line({
         points: points,
         closed: true,
-        fill: 'rgba(255, 0, 0, 0.25)',
-        stroke: 'red',
+        fill: 'rgb(120,187,123, 0.5)',
+        stroke: 'green',
         strokeWidth: 2,
       });
 
       konvaPoly.on('mouseenter', () => {
         container.style.cursor = 'pointer';
-        konvaPoly.fill('rgba(255, 0, 0, 0.45)');
+        konvaPoly.fill('rgb(120,187,123, 0.8)');
         konvaPoly.strokeWidth(3);
         this.layer?.draw();
       });
       konvaPoly.on('mouseleave', () => {
         container.style.cursor = 'grab';
-        konvaPoly.fill('rgba(255, 0, 0, 0.25)');
+        konvaPoly.fill('rgb(120,187,123, 0.3)');
         konvaPoly.strokeWidth(2);
         this.layer?.draw();
       });
-      konvaPoly.on('click', () => alert(`Clicked polygon #${idx + 1}`));
+      konvaPoly.on('click', () => alert(`Clicked on unit #${idx + 1}`));
 
       this.layer?.add(konvaPoly);
     });

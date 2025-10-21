@@ -1,10 +1,16 @@
 <div class="relative w-full h-full">
-  <!-- Konva container -->
-  <div #stageContainer class="konva-stage-container "></div>
+    <!-- Konva container -->
+    <div #stageContainer class="konva-stage-container "></div>
 
-  <!-- Zoom buttons -->
-  <div class="absolute bottom-4 right-4 flex flex-col space-y-2 z-10">
-    <button class="zoom-btn" (click)="zoomIn()">＋ Zoom In</button>
-    <button class="zoom-btn" (click)="zoomOut()">－ Zoom Out</button>
-  </div>
+    <!-- Zoom buttons -->
+    <div class="absolute bottom-4 right-4 flex flex-col space-y-2 z-10">
+        <div class="flex flex-row items-center justify-center space-x-2 pb-6 invert">
+            <mat-icon class="cursor-pointer">swipe_left</mat-icon>
+            <img src="direction.png" alt="" class="h-12 object-contain" />
+            <mat-icon class="cursor-pointer">swipe_right</mat-icon>
+        </div>
+
+        <button class="zoom-btn" (click)="zoomIn()">＋ Zoom In</button>
+        <button class="zoom-btn" (click)="zoomOut()">－ Zoom Out</button>
+    </div>
 </div>
