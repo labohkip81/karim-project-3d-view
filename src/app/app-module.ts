@@ -5,16 +5,19 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { MaterialModule } from './modules/material/material-module';
 import { Home } from './pages/home/home';
+import { NgxPanZoomModule } from 'ngx-panzoom';
+
+
 
 @NgModule({
   declarations: [
     App,
-    Home
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    NgxPanZoomModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

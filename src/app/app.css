@@ -1,0 +1,4 @@
+.mat-drawer-backdrop.mat-drawer-shown {
+  visibility: hidden !important;
+  background: transparent !important;
+}
