@@ -202,7 +202,7 @@ export class Home implements AfterViewInit {
     const newScale = oldScale * factor;
 
     // Limit zoom range
-    if (newScale < 0.3 || newScale > 5) return;
+    if (newScale < 0.5 || newScale > 5) return;
 
     const stage = this.stage;
     const center = {
