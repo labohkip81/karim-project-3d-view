@@ -1,0 +1,55 @@
+<!-- Fullscreen Modal Container -->
+<div
+  class="fixed inset-0 flex flex-col items-center justify-center bg-black/15 backdrop-blur-xs z-50"
+>
+  <!-- Transparent Navbar (fixed to top of page) -->
+  <div
+    class="absolute top-0 left-0 w-full flex items-center border-b border-white justify-between px-4 py-3 bg-black/20 backdrop-blur-xs z-50"
+  >
+    <!-- Left side: Back button + Title -->
+    <div class="flex items-center space-x-2">
+      <button mat-icon-button (click)="closeModal()">
+        <mat-icon class="text-white" style="color:white !important;">arrow_back</mat-icon>
+      </button>
+      <h2 class="text-white font-medium">Unit Images</h2>
+    </div>
+
+    <!-- Right side: Message + Share buttons -->
+    <div class="flex items-center space-x-3">
+      <button mat-icon-button>
+        <mat-icon class="text-white" style="color:white !important;">mail</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon class="text-white" style="color:white !important;">share</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Panorama Iframe -->
+
+    <swiper-container class="order-1 lg:order-0 Swiper lg:m-0 w-full   h-fit lg:h-screen" loop="true" [config]="swiperConfig"
+    navigation="true">
+
+    <swiper-slide class="swiperClass relative">
+      <img src="/interior.webp" class="h-[60vh] lg:h-screen object-cover w-full" alt="Living" />
+      <p
+        class="absolute  text-center bottom-0 w-full text-white text-xl lg:text-3xl font-semibold drop-shadow-lg praetoria uppercase">
+        Bedroom
+      </p>
+    </swiper-slide>
+
+    <swiper-slide class="swiperClass relative">
+      <img src="/interior.webp" class="h-[60vh] lg:h-screen object-cover w-full" alt="Dining" />
+      <p
+        class="absolute  text-center bottom-0 w-full text-white text-xl lg:text-3xl font-semibold drop-shadow-lg praetoria uppercase">
+        Bedroom
+      </p>
+    </swiper-slide>
+
+
+
+
+  </swiper-container>
+
+ 
+</div>
