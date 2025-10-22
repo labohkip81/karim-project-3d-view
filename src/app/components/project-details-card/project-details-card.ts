@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UnitImages } from '../unit-images/unit-images';
 import { FloorPlans } from '../floor-plans/floor-plans';
+import { Book } from '../book/book';
 
 @Component({
   selector: 'app-project-details-card',
@@ -25,6 +26,11 @@ export class ProjectDetailsCard {
 
   openFloorPlansDialog(){
     this.dialog.open(FloorPlans)
+  }
+
+
+  openBookModal(){
+    this.dialog.open(Book)
   }
 
 }

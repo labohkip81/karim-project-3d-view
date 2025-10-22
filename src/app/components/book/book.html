@@ -1,0 +1,136 @@
+<div class="h-fit w-full lg:w-fit  bg-cover bg-white max-w-md">
+    <div class="flex w-full flex-row justify-between">
+        <p></p>
+          <button
+    mat-icon-button
+    mat-dialog-close
+    aria-label="Close"
+    class="absolute top-2 mx-4 text-white hover:text-gray-700"
+  >
+    <mat-icon class="text-white">close</mat-icon>
+  </button>
+    </div>
+    
+
+  <h2 mat-dialog-title class="text-white">
+      <span class="text-black montserrat">Book Unit Today</span>
+  </h2>
+  <form
+      [formGroup]="DownloadBrochureFormGroup"
+      (submit)="downloadPdf(DownloadBrochureFormGroup.value)"
+      class="mt-8"
+  >
+      <mat-dialog-content class="mat-typography rounded-xl max-w-md">
+          <p class="text-black montserrat pb-3">
+              Fill the form below to register your interest
+          </p>
+
+          <!-- Name field -->
+          <mat-form-field class="w-full rounded-lg">
+              <mat-label>Full name</mat-label>
+              <input id="name" [formControlName]="'name'" matInput />
+              <mat-error> Full name is required </mat-error>
+          </mat-form-field>
+
+          <!-- Email field -->
+          <mat-form-field class="w-full">
+              <mat-label>Email address</mat-label>
+              <input
+                  id="email"
+                  [formControlName]="'email'"
+                  type="email"
+                  matInput
+              />
+              <mat-error> Email address is required </mat-error>
+              <mat-error> Please enter a valid email address </mat-error>
+              <mat-error
+                  *ngIf="
+                      DownloadBrochureFormGroup.get('email')?.hasError(
+                          'required'
+                      )
+                  "
+              >
+                  Email address is required
+              </mat-error>
+              <mat-error
+                  *ngIf="
+                      DownloadBrochureFormGroup.get('email')?.hasError(
+                          'email'
+                      ) &&
+                      !DownloadBrochureFormGroup.get('email')?.hasError(
+                          'required'
+                      )
+                  "
+              >
+                  Please enter a valid email address
+              </mat-error>
+          </mat-form-field>
+
+          <!-- Phone field -->
+          <mat-form-field class="w-full">
+              <mat-label>Phone</mat-label>
+              <input
+                  id=""
+                  matInput
+                  type="text"
+                  [formControlName]="'phoneNumber'"
+              />
+              <mat-error> Phone is required </mat-error>
+          </mat-form-field>
+
+          <!-- Company field -->
+          <mat-form-field class="w-full">
+              <mat-label>Company</mat-label>
+              <input
+                  [formControlName]="'company'"
+                  id="company-confirm"
+                  matInput
+              />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-full">
+              <mat-label>Unit</mat-label>
+              <mat-select formControlName="type" required>
+                  <mat-option value="AX-001"> AX-001 </mat-option>
+                  <mat-option value="AX-002"> AX-002 </mat-option>
+                   <mat-option value="AX-003"> AX-003 </mat-option>
+              </mat-select>
+          </mat-form-field>
+
+          <!-- Note field -->
+          <mat-form-field class="w-full">
+              <mat-label>Message</mat-label>
+              <input id="note" [formControlName]="'message'" matInput />
+          </mat-form-field>
+
+          <a
+              id="downLoadIt"
+              href=""
+              download
+              class="hidden"
+          >
+          </a>
+
+          <!-- ToS and PP -->
+          <div class="inline-flex text-white items-end w-full mt-1.5">
+              <mat-checkbox
+                  [color]="'primary'"
+                  [formControlName]="'agree_to_terms'"
+              >
+                  <span class="text-black"
+                      >I agree to the terms and conditions</span
+                  >
+              </mat-checkbox>
+          </div>
+      </mat-dialog-content>
+      <mat-dialog-actions align="end" class="space-x-4">
+          <button
+              type="submit"
+              class="bg-white px-6 py-3 mt-6 text-black rounded-full montserrat"
+              cdkFocusInitial
+          >
+              Send
+          </button>
+      </mat-dialog-actions>
+  </form>
+</div>

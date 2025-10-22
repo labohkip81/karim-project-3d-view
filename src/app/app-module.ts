@@ -14,6 +14,8 @@ import { Panorama } from './components/panorama/panorama';
 import { UnitImages } from './components/unit-images/unit-images';
 import { FloorPlans } from './components/floor-plans/floor-plans';
 import { register } from 'swiper/element/bundle';
+import { Book } from './components/book/book';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // register Swiper custom elements
 register();
@@ -33,7 +35,8 @@ register();
     AppRoutingModule,
     MaterialModule,
     NgxPanZoomModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

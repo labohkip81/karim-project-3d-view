@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Panorama } from './components/panorama/panorama';
+import { Book } from './components/book/book';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,10 @@ export class App {
       panelClass: 'mat-elevation-z8',
       hasBackdrop: true,
     })
+  }
+
+  openBookModal(){
+    this.dialog.open(Book)
   }
 
   closeModal(){

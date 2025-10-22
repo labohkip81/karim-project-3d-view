@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FloorPlans } from '../floor-plans/floor-plans';
 import { UnitImages } from '../unit-images/unit-images';
+import { Book } from '../book/book';
 
 @Component({
   selector: 'app-hover-modal',
@@ -27,6 +28,10 @@ export class HoverModal {
 
   closeCard(){
     this.dialog.closeAll();
+  }
+
+  openBookModal(){
+    this.dialog.open(Book)
   }
 
 }
