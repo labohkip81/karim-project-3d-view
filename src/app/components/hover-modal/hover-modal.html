@@ -19,16 +19,20 @@
             </div>
         </div>
 
-        <!-- Share -->
-        <div class="flex-1 flex justify-center items-center space-x-1 pl-3 cursor-pointer">
-            <mat-icon class="text-gray-600 text-base">share</mat-icon>
-            <span class="text-sm text-gray-700">Share</span>
+        <!-- Image -->
+        <div 
+        (click)="openImagesModal()"
+        class="flex-1 flex justify-center items-center space-x-1 pl-3 cursor-pointer">
+            <mat-icon class="text-gray-600 text-base">image</mat-icon>
+            <span class="text-sm text-gray-700">Images</span>
         </div>
 
-        <!-- Bookmark -->
-        <div class="flex-1 flex justify-center items-center space-x-1 pl-3 cursor-pointer">
-            <mat-icon class="text-gray-600 text-base">mail</mat-icon>
-            <span class="text-sm text-gray-700">Book</span>
+        <!-- Floor Plan -->
+        <div
+        (click)="openFloorPlans()"
+         class="flex-1 flex justify-center items-center space-x-1 pl-3 cursor-pointer">
+            <mat-icon class="text-gray-600 text-base">room_preferences</mat-icon>
+            <span class="text-sm text-gray-700">Floor Plan</span>
         </div>
     </div>
 

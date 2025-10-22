@@ -1,6 +1,8 @@
 import { DialogRef } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { FloorPlans } from '../floor-plans/floor-plans';
+import { UnitImages } from '../unit-images/unit-images';
 
 @Component({
   selector: 'app-hover-modal',
@@ -12,6 +14,15 @@ export class HoverModal {
 
   constructor(private dialog: MatDialog){
 
+  }
+
+  openFloorPlans(){
+    this.dialog.open(FloorPlans)
+  }
+
+
+  openImagesModal(){
+    this.dialog.open(UnitImages)
   }
 
   closeCard(){
