@@ -1,0 +1,8 @@
+swiper-container {
+    --swiper-pagination-bullet-inactive-color: var(--ion-color-step-200, #cccccc);
+    --swiper-pagination-color: var(--ion-color-primary, #eef1f5);
+    --swiper-navigation-size: 50px;
+    --swiper-navigation-top-offset: 50%;
+    --swiper-navigation-sides-offset: 15px;
+    --swiper-navigation-color: white;
+}

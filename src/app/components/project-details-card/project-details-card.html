@@ -30,10 +30,10 @@
         Detailed information about the selected project, images, specs, etc.
     </p>
 
-    <app-images-card></app-images-card>
+    <app-images-card (click)="openImagesDialog()"></app-images-card>
 
 
-    <div mat-btn
+    <div mat-btn (click)="openFloorPlansDialog()"
         class="card-body flex flex-row items-center justify-between px-4 py-3 shadow-md mt-6 bg-slate-100 rounded-xl transition-transform hover:scale-[1.02] hover:shadow-lg">
         <div class="flex items-center space-x-2">
             <mat-icon class="text-gray-600">room_preferences</mat-icon>

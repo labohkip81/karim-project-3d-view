@@ -2,10 +2,11 @@ import { Dialog } from '@angular/cdk/dialog';
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { SwiperOptions } from 'swiper/types';
+import { MaterialModule } from '../../modules/material/material-module';
 
 @Component({
   selector: 'app-unit-images',
-  imports: [CommonModule],
+  imports: [CommonModule, MaterialModule],
   standalone: true,
   templateUrl: './unit-images.html',
   styleUrl: './unit-images.css',

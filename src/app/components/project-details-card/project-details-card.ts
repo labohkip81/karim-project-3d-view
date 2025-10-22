@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { UnitImages } from '../unit-images/unit-images';
+import { FloorPlans } from '../floor-plans/floor-plans';
 
 @Component({
   selector: 'app-project-details-card',
@@ -9,5 +12,19 @@ import { Component, Input } from '@angular/core';
 export class ProjectDetailsCard {
 
   @Input() projectNumber = '';
+
+  constructor(private dialog: MatDialog) {
+
+  }
+
+
+  openImagesDialog(){
+    this.dialog.open(UnitImages)
+  }
+
+
+  openFloorPlansDialog(){
+    this.dialog.open(FloorPlans)
+  }
 
 }
